@@ -9,9 +9,13 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="weather" />
           <h1>Weather Application</h1>
-          <form>
-            <input className="App-header-searchbar" type="string" />
-          </form>
+          <div className="App-header-searchbar">
+            <form>
+            <label for="search">Enter your City's Zip Code</label>
+              <input placeholder="Enter Zip Code..." type="number"  />
+              <button>Search</button>
+            </form>
+          </div>
         </div>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.

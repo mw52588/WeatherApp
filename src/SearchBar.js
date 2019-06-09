@@ -23,7 +23,7 @@ class SearchBar extends Component {
             <div className="App-header-searchbar">
               <form onSubmit={this.handleSubmit}>
                 <label>&#160;&#160;Zip Code
-                    <input type="text" maxlength="5" placeholder="Enter Zip Code..." value={this.state.value} onChange={this.handleChange}/>
+                    <input type="text" maxLength="5" placeholder="Enter Zip Code..." value={this.state.value} onChange={this.handleChange}/>
                 </label>
                 <input type="submit" value="Submit"/>
               </form>

@@ -12,10 +12,10 @@ class Humidity extends Component {
   render() {
     return (
         <div className="Humidity">
-            <h1>Humidity</h1>
-            <h1>Dew Poin:t</h1>
-            <h2>UV Index:</h2>
-            <h3>Visibility:</h3>
+            <h1>Humidity: {this.props.weatherInfo.main.humidity}</h1>
+            <h1>Pressure: {this.props.weatherInfo.main.pressure}</h1>
+            <h2>Wind Speed: {this.props.weatherInfo.wind.speed}</h2>
+            <h3>Visibility:{this.props.weatherInfo.visibility}</h3>
         </div>
     );
   };

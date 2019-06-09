@@ -125,8 +125,25 @@
   float: left;
   width: 60%;
   padding-top: 40px;
+
 }
 
+.WeatherInfo img {
+  width: 100px;
+  display: inline-block;
+  height: 100px;
+  
+  padding: 5px;
+}
+
+.WeatherInfo  h2{
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 20px;
+}
+.WeatherInfo h3 {
+  margin-top: 10px;
+}
 .Humidity {
   float: right;
   width: 40%;

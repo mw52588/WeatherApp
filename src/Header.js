@@ -13,7 +13,7 @@ class Header extends Component {
         return (
             <div className="App-header clearfix">
                  <img src={logo} className="App-logo" alt="weather" />
-                  <h1>Weather Application</h1>
+                  <h1>{this.props.title}</h1>
                   <SearchBar/>
             </div>
         );

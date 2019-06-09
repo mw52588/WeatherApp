@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Humidity from './Humidity';
 import WeatherInfo from './WeatherInfo' 
-class Container extends Component {
+class Radar extends Component {
 
   constructor(props) {
     super(props);
@@ -11,11 +11,9 @@ class Container extends Component {
   render() {
     return (
         <div className="Container">
-           <WeatherInfo />
-           <Humidity />
-
+        
         </div>
     );
   }
 }
-export default Container;
+export default Radar;

@@ -25,11 +25,20 @@
   padding: 20px;
   height: 80px;
   color: white;
+  padding-left: 80px;
+  
   width: 100%;
+  padding-bottom: 50px;
+}
+
+.App-header span {
+  color: red;
+  font-style: bold;
 }
 .App-header img {
   margin-left :20px;
   float: left;
+  margin-top: 20px;
 }
 
 .App-header h1 {
@@ -42,8 +51,8 @@
 .App-header-searchbar {
   text-align: left;
   float: right; 
-  margin-right: 100px; 
-  margin-top: 20px;
+  padding-right: 200px; 
+  padding-top: 20px;
   
 }
 .App-header-searchbar label {
@@ -90,25 +99,33 @@
 .NavigationBar  {
  padding-bottom: 20px;
  background-color: #222;
-}
-.NavigationBar ul {
+
  
-  margin: 0px;
+}
+
+.NavigationBar ul {
+  margin-top : 0px;
+  padding-left: 300px;
+  
+ 
+ 
 }
 
 .NavigationBar ul li {
-  display: inline-block;
-  padding-left: 100px;
-  margin-top: 20px;
-  padding-right:100px;
+  display: inline-table;
+  padding-left: 150px; 
+  padding-right: 150px;
+  
+ margin-top: 20px;
+
+ 
+ 
 }
 
 .NavigationBar ul li a {
   text-decoration: none;
   color: white;
   border-radius: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
   box-shadow: 2px, -3px, 22px, 1px, black;
   
 }
@@ -123,16 +140,16 @@
 
 .WeatherInfo {
   float: left;
-  width: 60%;
+  width:60%;
   padding-top: 40px;
-
+  text-align: left;
+ 
 }
 
 .WeatherInfo img {
   width: 100px;
   display: inline-block;
   height: 100px;
-  
   padding: 5px;
 }
 
@@ -146,5 +163,7 @@
 }
 .Humidity {
   float: right;
-  width: 40%;
+  padding-top: 50px;
+  width:40%;
+  text-align: left;
 }

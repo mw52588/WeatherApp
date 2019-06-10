@@ -2,21 +2,27 @@ import React, { Component } from 'react';
 import './App.css';
 import Humidity from './Humidity';
 import WeatherInfo from './WeatherInfo';
-
+// Hourly component displays the Current and Hourly 
+// forecast for the displayed zip code.
 class Hourly extends Component {
 
-  constructor(props) {
-    super(props);
-    
-  }
-
   render() {
-    return (
+    if (this.props.weatherInfo.weather !== '') {
+      return (
         <div className="Container">
-           <WeatherInfo weatherInfo={this.props.weatherInfo}/>
-           <Humidity weatherInfo={this.props.weatherInfo} />
+          {/* Pass in the weatherInfo prop to both components */}
+          <WeatherInfo weatherInfo={this.props.weatherInfo}/>
+          <Humidity weatherInfo={this.props.weatherInfo} />
         </div>
-    );
+      );
+    }
+    else {
+      return (
+        <div className="Container">
+
+        </div>
+      );
+    }
   }
 }
 export default Hourly;

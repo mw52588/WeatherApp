@@ -3,16 +3,15 @@ import './App.css';
 
 class Humidity extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
+  //Convert the visibility from meters to miles.
   ConvertMetersToMiles(meters) {
      return (meters / 1609.34).toFixed(2);
   }
+
+  //Calculate wind direction based on degrees.
   WindDirection(dir) {
     let direction = "";
-    if (dir >= 347.5 && dir <= 360 || dir >= 0 && dir <= 12.5 ) {
+    if ((dir >= 347.5 && dir <= 360) || ( dir >= 0 && dir <= 12.5 )) {
       direction = "N";
     }
     else if (dir > 12.5 && dir < 77.5 ) {
@@ -44,9 +43,9 @@ class Humidity extends Component {
 
     return (
         <div className="Humidity">
-            <h1>Humidity: {this.props.weatherInfo.weather.main.humidity} %</h1>
-            <h1>Pressure: {this.props.weatherInfo.weather.main.pressure} hPa</h1>
-            <h2>Wind Speed: {direction} at {this.props.weatherInfo.weather.wind.speed} mph.</h2>
+            <h3>Humidity: {this.props.weatherInfo.weather.main.humidity} %</h3>
+            <h3>Pressure: {this.props.weatherInfo.weather.main.pressure} hPa</h3>
+            <h3>Wind Speed: {direction} at {this.props.weatherInfo.weather.wind.speed} MPH</h3>
             <h3>Visibility: {visibility} miles</h3>
         </div>
     );

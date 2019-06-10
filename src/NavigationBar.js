@@ -10,14 +10,11 @@ import Hourly from './Hourly';
 import FiveDay from './FiveDay';
 import Radar from './Radar';
 
+// This Component use react-router to display the 
+// navigation tabs without reloading data.
 class NavigationBar extends Component {
 
-  constructor(props) {
-    super(props);        
-  }
-
   render() {
-    
     return (
       <HashRouter>
         <div className="NavigationBar">
@@ -29,6 +26,7 @@ class NavigationBar extends Component {
             </ul>
           </nav>
             <div>
+              {/* Pass in the weatherInfo props to Hourly Component. */}
               <Route exact path="/" render={props => <Hourly weatherInfo={this.props.weatherInfo} {...props} />} />
               <Route path="/5day" component={FiveDay}/>
               <Route path="/Radar" component={Radar}/>

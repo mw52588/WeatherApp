@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './weather.png';
 import './App.css';
 import SearchBar from './SearchBar';
-import NavigationBar from './NavigationBar';
 
 class Header extends Component {
     constructor(props) {
@@ -14,7 +13,7 @@ class Header extends Component {
             <div className="App-header clearfix">
                  <img src={logo} className="App-logo" alt="weather" />
                   <h1>{this.props.title}</h1>
-                  <SearchBar/>
+                  <SearchBar onZipChange={this.props.onZipChange}/>
             </div>
         );
     }

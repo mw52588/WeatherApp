@@ -23,15 +23,17 @@ class SearchBar extends Component {
     } 
 
     handleSearchSubmit(event) {
+        event.preventDefault();
         if (this.state.value === '' || this.state.value.length !== 5) {
             this.setState( {error: "Please enter a valid zip code"} ); 
             return;
         }
         else {
             this.setState( {error: ""} );
+            this.props.onZipChange(this.state.value);  //Use the callback function to update state of zip in App.js
         }
-        event.preventDefault();
-        this.props.onZipChange(this.state.value);  //Use the callback function to update state of zip in App.js
+        
+        
     }
 
     render() {

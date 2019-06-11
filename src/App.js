@@ -43,11 +43,14 @@ class App extends Component {
       weather: [],
       done: false,
       darkskyWeather: [],
-       lat: '',
-       lon: ''
-     
+      lat: '',
+      lon: '',
+      error: ''
     }
+
     this.onZipChange = this.onZipChange.bind(this);
+    this.handleErrorState = this.handleErrorState.bind(this);
+
   }
 
   async fetchCoords(zip) {
@@ -56,9 +59,17 @@ class App extends Component {
       const fetchResult = fetch(URL)
       const response = await fetchResult;
       const result = await response.json();
+      console.log(result);
+      if(result.cod !== 200) {
+        let error = "Error: " + result.cod + " " + result.message;
+        
+        console.log(error);
+        throw Error(error);
+      }
       return result;
-    } catch(e){
-      throw Error(e);
+    } catch(error){
+      
+      throw Error(error);
     }
   }
   
@@ -68,22 +79,38 @@ class App extends Component {
     try {
       const fetchResult = fetch(URL);
       const response = await fetchResult;
+    
       const result = await response.json();
+     
       return result;
+      /*}
+      else {
+        this.handleErrorState(response.statusText);
+        console.log("Error thrown: " + response.statusText);
+        throw new Error(response.statusText);
+      }
+   */
     }catch (error) {
-      throw Error(error);
+      throw new Error(error);
+     
     }
   }
   
-  
+  handleErrorState(error) {
+    this.setState( {error: error})
+  }
   //Call back method for Search Bar method.  Fetches the JSON data from openweather map
   // and passes the data onto other child componenents
   onZipChange(zip) {
-    this.fetchCoords(zip).then( (result) => {
-       this.setState( { zip: zip, weather: result, lat: result.coord.lat, lon: result.coord.lon });
-       this.fetchWeather(this.state.lat, this.state.lon).then( (result) => {
+   
+    this.fetchCoords(zip)
+    .then( (result) => {
+      this.setState( { zip: zip, weather: result, lat: result.coord.lat, lon: result.coord.lon });
+   
+      this.fetchWeather(this.state.lat, this.state.lon)
+      .then( (result) => {
         this.setState({ done: true, darkskyWeather: result })
-       });
+      })
     });
   }
 
@@ -109,7 +136,7 @@ class App extends Component {
 
           {/* Pass in the onZipChange async method to child components.  
           Used in SearchBar component to update the state as a callback */}
-          <Header onZipChange={this.onZipChange} title="Weather Application">
+          <Header handleErrorState={this.handleErrorState} onZipChange={this.onZipChange} title="Weather Application">
           </Header>
           <NavigationBar weatherInfo={this.state}/>
 

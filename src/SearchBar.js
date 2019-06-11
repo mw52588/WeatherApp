@@ -8,15 +8,15 @@ class SearchBar extends Component {
         super(props);
         
         this.state = { 
-            value: '',
-            error: '',
-            error_style: 'border: 0',
+            value: ''
         };
         //Need to bind the methods action from onSubmit and onChange.
         this.handleSearchChange = this.handleSearchChange.bind(this);
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     }
 
+
+   
     handleSearchChange(event) {
         event.preventDefault();  //enusre page doesn't reload.
         this.setState({value: event.target.value});  //set the state when a user types in the search bar.
@@ -24,8 +24,8 @@ class SearchBar extends Component {
 
     handleSearchSubmit(event) {
         event.preventDefault();
-        if (this.state.value === '' || this.state.value.length !== 5) {
-            this.setState( {error: "Please enter a valid zip code"} ); 
+        if (!(/^\d+$/.test(this.state.value)) || this.state.value.length < 5) {
+            this.props.handleErrorState("Please enter a valid zip code");
             return;
         }
         else {
@@ -46,7 +46,7 @@ class SearchBar extends Component {
                     <input type="text" maxLength="5" placeholder="Enter Zip Code..." value={this.state.value} onChange={this.handleSearchChange}  />
                 </label>
                 <input type="submit" value="Submit"/>
-                <p><span>{this.state.error}</span><br></br><br></br></p>
+                <p><span>{this.props.error}</span><br></br><br></br></p>
               </form>
             
             </div>

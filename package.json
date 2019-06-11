@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "braces": "^3.0.2",
+    "js-yaml": "^3.13.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "webpack-dev-server": "^3.7.1"
   },
   "devDependencies": {},
   "scripts": {

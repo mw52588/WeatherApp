@@ -12,7 +12,7 @@ class Header extends Component {
             <div className="App-header clearfix">
                  <img src={logo} className="App-logo" alt="weather" />
                   <h1>{this.props.title}</h1>
-                  <SearchBar handleErrorState={this.props.handleErrorState} onZipChange={this.props.onZipChange}/>
+                  <SearchBar error={this.props.error} handleErrorState={this.props.handleErrorState} onZipChange={this.props.onZipChange}/>
             </div>
         );
     }

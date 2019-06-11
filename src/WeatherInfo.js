@@ -19,18 +19,17 @@ class WeatherInfo extends Component {
     }
     let weatherImg = "http://openweathermap.org/img/w/";
     weatherImg += symbol + ".png";
-    console.log(weatherImg);
     return weatherImg;
   }
-
+  
   render() {
     //console.log(this.props.weatherInfo.location.results[0].locations[0].latLng.lat);
     //console.log(this.props.weatherInfo.location.results[0].locations[0].latLng.lng);
     //console.log("Latitude: "+  this.props.location.results[0].locations.latLng.lat);
     //console.log("Longitude: "+  this.props.location.results[0].locations.latLng.lng)
+
     let current = this.KelvinToFahrenheit(this.props.weatherInfo.weather.main.temp);  //Convert Kelvin to Fahrenheit.
     let symbol = this.GetSymbol(this.props.weatherInfo.weather.weather[0].icon); //Convert the image from json data of WeatherInfo prop.
-    
     //Update the Component's weatherInfo.
     return (
       <div className="WeatherInfo">

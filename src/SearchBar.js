@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-
 // This component will allow a user to submit a zip code and update the state of value
 // and on submit it will use the onZipChagne callback from App.js to update teh state of the zip code.
 class SearchBar extends Component {
@@ -29,12 +28,11 @@ class SearchBar extends Component {
             return;
         }
         else {
-            this.setState( {error: ""} );
+            this.props.handleErrorState('');
             this.props.onZipChange(this.state.value);  //Use the callback function to update state of zip in App.js
-        }
-        
-        
+        }    
     }
+
 
     render() {
         return (

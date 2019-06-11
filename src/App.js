@@ -13,9 +13,9 @@ class App extends Component {
       zip: '28211',
       weather: [],
       done: false,
-      location: [],
-      lat: '',
-      lng: ''
+      darkskyWeather: [],
+      lat: '35.17',
+      lng: '-80.79'
     }
     this.onZipChange = this.onZipChange.bind(this);
   }
@@ -28,6 +28,8 @@ class App extends Component {
     let url = "http://api.openweathermap.org/data/2.5/weather?zip="
     url += zip;
     url += "&apikey=dcd396a13d862c3866ee78206dad4f88"
+    let lng = '';
+    let lat = '';
     console.log(url);
     fetch(url)
       .then( (res) => {
@@ -36,23 +38,40 @@ class App extends Component {
         }
          return res.json();
       }).then( (result) => {
-        
-        console.log(result.coord.lon);
-        console.log(result.coord.lat);
-        this.setState({ zip: zip, weather: result, lng: result.coord.lon, lat: result.coord.lat, done: true })
+        lng = result.coord.lon
+        lat = result.coord.lat
+        this.setState({ zip: zip, weather: result, lng: result.coord.lon, lat: result.coord.lat })
       }).catch( (error) => {
         console.log(error);
       });
+
+      let darkskyURL = "https://api.darksky.net/forecast/";
+      darkskyURL+="b552af31e2a5c7396e28b2befbfbf422/";
+      darkskyURL+=(this.state.lat) + "," + (this.state.lng);
+      var proxy = "https://cors-anywhere.herokuapp.com/";
+    fetch(proxy + darkskyURL)
+    .then( (res) => {
+      if (!res.ok) {
+        throw Error(res.statusText);
+      }
+       return res.json();
+    }).then( (result) => {
+      this.setState({ darkskyWeather: result, done: true })
+    }).catch( (error) => {
+      console.log(error);
+    });
+    
   } 
 
   //On initial load call the onZipChagne call back function.
   componentDidMount() {
     this.onZipChange(this.state.zip);
   }
-
+ 
   //Render fucntion that waits until initial state is completed before displaying weather information.  
   // This ensures that weather data is properly displayed 
   render() {
+    console.log(this.state.darkskyWeather);
     if(!this.state.done) {
       return (
         <div className="App">

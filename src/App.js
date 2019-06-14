@@ -30,7 +30,7 @@ class App extends Component {
       
       const response = await fetch(URL)
       const result = await response.json();
-      console.log(result.cod);
+      console.log(result);
       if (result.cod === 200) {
         return result;
       }
@@ -40,18 +40,17 @@ class App extends Component {
   }
   
   async fetchWeather(lat, lon) {
-    const URL = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/b552af31e2a5c7396e28b2befbfbf422/${lat},${lon}`;
+      const URL = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/b552af31e2a5c7396e28b2befbfbf422/${lat},${lon}`;
     try {
       const response = await fetch(URL)
       const result = await response.json();
+      console.log(result);
       return result;
     }catch (error) {
       throw new Error(error);
     }
   }
   
-
-
   handleErrorState(error) {
 
     this.setState( {error: error})
@@ -61,18 +60,20 @@ class App extends Component {
   onZipChange(zip) {
     this.fetchCoords(zip)
     .then( (result) => {
-      this.setState( { zip: zip, weather: result, lat: result.coord.lat, lon: result.coord.lon });
-      this.fetchWeather(this.state.lat, this.state.lon)
-      .then( (result) => {
-        this.setState({ done: true, darkskyWeather: result })
-      })
-      .catch(err => console.log(err))
+        this.setState( { zip: zip, weather: result, lat: result.coord.lat, lon: result.coord.lon });
+        this.fetchWeather(this.state.lat, this.state.lon)
+        .then( (result) => {
+            console.log(result);
+            this.setState({ done: true, darkskyWeather: result })
+        })
+        .catch(err => console.log(err))
    
     })
+
     .catch( (err) => {
-      console.log(err);
-      this.handleErrorState("Please enter a valid zip code");
-      return;
+        console.log(err);
+        this.handleErrorState("Please enter a valid zip code");
+        return;
     });
   }
 
@@ -98,7 +99,7 @@ class App extends Component {
           Used in SearchBar component to update the state as a callback */}
           <Header error={this.state.error} handleErrorState={this.handleErrorState} onZipChange={this.onZipChange} title="Weather Application">
           </Header>
-          <NavigationBar weatherInfo={this.state}/>
+          <NavigationBar weather={this.state.weather} darkskyWeather={this.state.darkskyWeather} weatherInfo={this.state}/>
 
           {/* Pass in the weatherinfo as state to child componenets
            Used for Hourly, Hourly and Humidity components as props */}

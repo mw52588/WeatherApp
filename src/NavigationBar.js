@@ -27,7 +27,7 @@ class NavigationBar extends Component {
           </nav>
             <div>
               {/* Pass in the weatherInfo props to Hourly Component. */}
-              <Route exact path="/" render={props => <Hourly weatherInfo={this.props.weatherInfo} {...props} />} />
+              <Route exact path="/" render={props => <Hourly weather={this.props.weather} darkskyWeather={this.props.darkskyWeather} weatherInfo={this.props.weatherInfo} {...props} />} />
               <Route path="/5day" component={FiveDay}/>
               <Route path="/Radar" component={Radar}/>
             </div>

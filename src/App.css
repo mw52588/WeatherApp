@@ -1,167 +1,153 @@
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
 
 .active {
-  padding-bottom: 10px;
-  border-bottom: 3px solid teal;
-  border-radius: 10px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid teal;
+    border-radius: 10px;
 }
 
-
 .App {
-  text-align: center;
-  
+    text-align: center;
 }
 
 .App-logo {
-  height: 80px;
+    height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  padding: 20px;
-  height: 80px;
-  color: white;
-  padding-left: 80px;
-  
-  width: 100%;
-  padding-bottom: 50px;
+    background-color: #222;
+    color: white;
+    padding-top: 10px;
 }
 
 .App-header span {
-  color: red;
-  font-style: bold;
+    color: red;
+    font-style: bold;
 }
+
 .App-header img {
-  margin-left :20px;
-  float: left;
-  margin-top: 20px;
+    display: inline-block;
+    vertical-align: top;
+    
 }
 
 .App-header h1 {
-  float:left;
-  padding-top: 15px;
-  font-size: 32px;
-  margin-left: 80px;
+    display: inline-block;
+    font-size: 32px;
+    padding-left: 50px;
+    padding-right: 70px;
+    vertical-align: top;
 }
 
 .App-header-searchbar {
-  text-align: left;
-  float: right; 
-  padding-right: 200px; 
-  padding-top: 20px;
-  
+    display: inline-block;
+    text-align: left;
+    margin-top: 50px;
+    vertical-align: bottom;
 }
+
 .App-header-searchbar label {
-  display:inline-block;
-  font-size: 14px;
-  
+    display: inline-block;
+    font-size: 14px;
 }
+
 .App-header-searchbar input[type=text] {
-  font-size: 16px;
-  border-radius:10px;
-  padding: 10px; 
-  display:block;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 10px;
+    display: block;
 }
 
 .App-header-searchbar input[type=submit] {
- 
-  color: #fff !important;
-  text-transform: uppercase;
-  background: #60a3bc;
-  padding: 10px;
-  margin-left: 5px;
-  border-radius: 10px;
-  display: inline-block;
-  border: none;
+    color: #fff !important;
+    text-transform: uppercase;
+    background: #60a3bc;
+    padding: 10px;
+    margin-left: 5px;
+    border-radius: 10px;
+    display: inline-block;
+    border: none;
 }
 
 .App-header-searchbar input[type=submit]:hover {
-  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  transition: all 0.4s ease 0s;
-  cursor: pointer;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+    box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    transition: all 0.4s ease 0s;
+    cursor: pointer;
 }
-nav {
-  background-color: #222;
-  padding: 20px;
-}
-.Container {
-  
-  width: 1000px;
-  text-align: center;
-  background-color: teal;
-  margin-left: auto;
-  margin-right: auto;
 
+nav {
+    background-color: #222;
+    display: block;
 }
-.NavigationBar  {
- padding-bottom: 20px;
+
+.Container {
+    width: 960px;
+    text-align: center;
+    background-color: teal;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .NavigationBar ul {
-  margin-top : 0px;
-  padding-left: 300px;
+    margin: 0px;
+    padding-bottom: 20px;
 }
 
 .NavigationBar ul li {
-  display: inline-table;
-  padding-left: 150px; 
-  padding-right: 150px;
-  margin-top: 20px;
-
- 
- 
+    display: inline-table;
+    padding-left: 150px;
+    padding-right: 150px;
+    margin-top: 20px;
 }
 
 .NavigationBar ul li a {
-  text-decoration: none;
-  color: white;
-  border-radius: 10px;
-  box-shadow: 2px, -3px, 22px, 1px, black;
-  
+    text-decoration: none;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 2px, -3px, 22px, 1px, black;
 }
 
 .NavigationBar ul li:hover {
-  cursor: pointer;
-  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-  box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    cursor: pointer;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+    box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
 }
 
 .WeatherInfo {
- 
-  width: 50%;
-  padding-top: 40px;
-  padding-left: 20px;
-  text-align: left;
-  display: inline-block;
+    
+    text-align: left;
+    display: inline-block;
+    padding: 50px;
+    width: 40%;
 }
 
 .WeatherInfo img {
-  width: 100px;
-
-  height: 100px;
-  padding: 5px;
+    width: 100px;
+    display: inline-block;
+    height: 100px;
+    padding: 5px;
 }
 
-.WeatherInfo  h2{
-  display: inline-block;
-  vertical-align: top;
-  padding-top: 20px;
+.WeatherInfo h2 {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 20px;
 }
+
 .WeatherInfo h3 {
-  margin-top: 10px;
+    margin-top: 10px;
 }
+
 .Humidity {
-  width: 45%;
-  padding-top: 100px;
-  vertical-align: top;
-  display: inline-block;
-  text-align: left;
+    display: inline-block;
+    text-align: left;
+}
+
+.HourList {
+    text-align: center;
+    display: block;
 }

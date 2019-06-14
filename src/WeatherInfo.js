@@ -28,16 +28,18 @@ class WeatherInfo extends Component {
     //console.log("Latitude: "+  this.props.location.results[0].locations.latLng.lat);
     //console.log("Longitude: "+  this.props.location.results[0].locations.latLng.lng)
 
-    let current = this.KelvinToFahrenheit(this.props.weatherInfo.weather.main.temp);  //Convert Kelvin to Fahrenheit.
+    let current = this.props.darkskyWeather.currently.apparentTemperature;
     let symbol = this.GetSymbol(this.props.weatherInfo.weather.weather[0].icon); //Convert the image from json data of WeatherInfo prop.
     //Update the Component's weatherInfo.
     return (
       <div className="WeatherInfo">
         <img src={symbol} alt="weatherIcon" />
         <h2>{current} &deg;F</h2>
-        <h3>City: {this.props.weatherInfo.weather.name}</h3>
-        <h3>Description: </h3>
-        <h3>{this.props.weatherInfo.weather.weather[0].main}</h3>
+        <h3>{this.props.weather.name}, {this.props.weather.sys.country}</h3>
+        <p>{this.props.darkskyWeather.currently.summary}</p>
+        <p>Feels like: {this.props.darkskyWeather.currently.apparentTemperature} &deg;F</p>
+        <p>Low: {this.props.darkskyWeather.daily.data[0].temperatureLow} &deg;F High: {this.props.darkskyWeather.daily.data[0].temperatureHigh} &deg;F</p>
+        <p>Today: {this.props.darkskyWeather.hourly.summary}</p>
       </div>
     );
   }

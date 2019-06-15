@@ -22,6 +22,14 @@ class ListItem extends Component {
         this.state = {
             show: false
         }
+        this.toggleInfo = this.toggleInfo.bind(this);
+    }
+
+    toggleInfo() {  
+        console.log("TOggle");
+        this.setState(state => ({
+            show: !state.show
+        }));
     }
 
     summaryImage(image) {
@@ -127,16 +135,34 @@ class ListItem extends Component {
         return formattedTime; 
     }
 
-
+    renderElement() {
+        if (this.state.show === true) {
+            return (
+                <div>
+                    <div>{this.props.item.precipProbability} %</div>
+                    <div>Dew Point {this.props.item.dewPoint} %</div>
+                    <div>UV Index{this.props.item.uvIndex}</div>
+                    <div>{this.props.item.temperature} &deg;F</div>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div></div>
+            );
+        }
+    }
 
         //Need to bind the methods action from onSubmit and onChange.
     render() {
         let item = this.props.item;
+        console.log(item);
         return (
-            <li>
+            <li onClick={this.toggleInfo}>
                <div className="listImage"><img src={this.summaryImage(item.icon)} height='50px' width='50px' alt="weather_images"></img></div>
                 <div className="listDate">{this.convertUnixTimeStamp(item.time).month} {this.convertUnixTimeStamp(item.time).day} {this.convertUnixTimeStamp(item.time).hour}:00</div>
-                <div>{item.summary}</div>  
+                <div>{item.summary}</div> 
+                {this.renderElement()}
             </li>
         );
     }

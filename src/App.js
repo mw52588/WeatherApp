@@ -99,7 +99,7 @@ class App extends Component {
           Used in SearchBar component to update the state as a callback */}
           <Header error={this.state.error} handleErrorState={this.handleErrorState} onZipChange={this.onZipChange} title="Weather Application">
           </Header>
-          <NavigationBar weather={this.state.weather} darkskyWeather={this.state.darkskyWeather} weatherInfo={this.state}/>
+          <NavigationBar weather={this.state.weather} darkskyWeather={this.state.darkskyWeather}/>
 
           {/* Pass in the weatherinfo as state to child componenets
            Used for Hourly, Hourly and Humidity components as props */}

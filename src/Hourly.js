@@ -8,12 +8,12 @@ import HourList from './HourList';
 class Hourly extends Component {
 
   render() {
-    if (this.props.weatherInfo.weather !== '') {
+    if (this.props.weather !== '') {
       return (
         <div className="Container">
           {/* Pass in the weatherInfo prop to both components */}
-          <WeatherInfo weather={this.props.weather} darkskyWeather={this.props.darkskyWeather} weatherInfo={this.props.weatherInfo}/>
-          <Humidity weatherInfo={this.props.weatherInfo} weather={this.props.weather} darkskyWeather={this.props.darkskyWeather} />
+          <WeatherInfo weather={this.props.weather} darkskyWeather={this.props.darkskyWeather}/>
+          <Humidity weather={this.props.weather} darkskyWeather={this.props.darkskyWeather} />
           <HourList className="dailyInfo" darkskyWeather={this.props.darkskyWeather}></HourList>
         </div>
       );

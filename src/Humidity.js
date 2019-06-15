@@ -38,17 +38,17 @@ class Humidity extends Component {
     return direction;
   }
   render() {
-    let visibility = this.ConvertMetersToMiles(this.props.weatherInfo.weather.visibility);
-    let direction = this.WindDirection(this.props.weatherInfo.weather.wind.deg);
+    let visibility = this.ConvertMetersToMiles(this.props.weather.visibility);
+    let direction = this.WindDirection(this.props.weather.wind.deg);
     let precip = this.props.darkskyWeather.currently.precipProbability * 100;
     let humidity = this.props.darkskyWeather.currently.humidity * 100;
     return (
         <div className="Humidity">
-            <p>Preceiption: {precip}%</p>
-            <p>Humidity: {humidity}%</p>
-            <p>Dew Point: {this.props.darkskyWeather.currently.dewPoint}</p>
+            <p>Preceiption: {Math.round(precip)}%</p>
+            <p>Humidity: {Math.round(humidity)}%</p>
+            <p>Dew Point: {Math.round(this.props.darkskyWeather.currently.dewPoint)}</p>
             <p>UV Index: {this.props.darkskyWeather.currently.uvIndex}</p>
-            <p>Wind Speed: {direction} at {this.props.weatherInfo.weather.wind.speed} MPH</p>
+            <p>Wind Speed: {direction} at {this.props.weather.wind.speed} MPH</p>
             <p>Visibility: {visibility} miles</p>
         </div>
     );

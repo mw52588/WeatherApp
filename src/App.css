@@ -161,6 +161,7 @@ nav {
     text-align: left;
     margin-left: 200px;
     margin-right: 200px;
+    border-radius: 5px;
 }
 
 .listImage {
@@ -172,4 +173,9 @@ nav {
     text-align: right;
     float: right;
 
+}
+
+.listItemShow {
+    clear:both;
+    padding: 5px;
 }

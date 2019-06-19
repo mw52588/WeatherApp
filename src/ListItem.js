@@ -79,55 +79,56 @@ class ListItem extends Component {
     }
 
     convertUnixTimeStamp(unixtimestamp) {
-        let date = new Date(unixtimestamp *1000);
-        let m = date.getMonth();
-        switch (m) {
-            case 0: 
-                m = "Jan";
-                break;
-            case 1:
-                m = "Feb";
-                break;
-            case 2: 
-                m = "Mar";
-                break;
-            case 3: 
-                m = "Apr";
-                break;
-            case 4:
-                m = "May";
-                break;
-            case 5:
-                m = "Jun";
-                break;
-            case 6:
-                m = "Jul";
-                break;
-            case 7:
-                m = "Aug";
-                break;
-            case 8:
-                m = "Sep";
-                break;
-            case 9:
-                m ="Oct";
-                break;
-            case 10:
-                m = "Nov";
-                break;
-            case 11:
-                m = "Dec";
-                break;
-            default:
-                m ="";
-        }
+        let date = new Date(unixtimestamp * 1000);
 
+        
+        let m = new Array(11);
+        m[0] = "Jan";
+        m[1] = "Feb";
+        m[2] = "Mar";
+        m[3] = "Apr";
+        m[4] = "May";
+        m[5] = "Jun";
+        m[6] = "Jul";
+        m[7] = "Aug";
+        m[8] = "Sep";
+        m[9] = "Oct";
+        m[10] = "Nov";
+        m[11] = "Dec";
+        let month = m[date.getMonth()];
+
+        let h = new Array(23);
+        h[0] = "12:00 AM";
+        h[1] = "1:00 AM";
+        h[2] = "2:00 AM";
+        h[3] = "3:00 AM";
+        h[4] = "4:00 AM";
+        h[5] = "5:00 AM";
+        h[6] = "6:00 AM";
+        h[7] = "7:00 AM";
+        h[8] = "8:00 AM";
+        h[9] = "9:00 AM";
+        h[10] = "10:00 AM";
+        h[11] = "11:00 AM";
+        h[12] = "12:00 PM";
+        h[13] = "01:00 PM";
+        h[14] = "02:00 PM";
+        h[15] = "03:00 PM";
+        h[16] = "04:00 PM";
+        h[17] = "05:00 PM";
+        h[18] = "06:00 PM";
+        h[19] = "07:00 PM";
+        h[20] = "08:00 PM";
+        h[21] = "09:00 PM";
+        h[22] = "10:00 PM";
+        h[23] = "11:00 PM";
+        let hour = h[date.getHours()];
 
         let formattedTime = {
             year: date.getFullYear(),
-            month: m,
-            day: date.getDay(),
-            hour: date.getHours(),
+            month: month,
+            day: date.getDate(),
+            hour: hour,
             minutes: date.getMinutes(),
             seconds: date.getSeconds(),
         }
@@ -138,11 +139,12 @@ class ListItem extends Component {
     renderElement() {
         if (this.state.show === true) {
             return (
-                <div>
-                    <div>{this.props.item.precipProbability} %</div>
-                    <div>Dew Point {this.props.item.dewPoint} %</div>
-                    <div>UV Index{this.props.item.uvIndex}</div>
-                    <div>{this.props.item.temperature} &deg;F</div>
+                <div className="listItemShow">
+                    <div>Precipitation:    {Math.round(this.props.item.precipProbability)}%</div>
+                    <div>Dew Point:  {Math.round(this.props.item.dewPoint)}</div>
+                    <div>UV Index: {this.props.item.uvIndex}</div>
+                    <div>Humidity: {Math.round((this.props.item.humidity)*100)}%</div>
+
                 </div>
             );
         }
@@ -156,12 +158,14 @@ class ListItem extends Component {
         //Need to bind the methods action from onSubmit and onChange.
     render() {
         let item = this.props.item;
-        console.log(item);
+        let date = this.convertUnixTimeStamp(item.time);
+    
         return (
             <li onClick={this.toggleInfo}>
                <div className="listImage"><img src={this.summaryImage(item.icon)} height='50px' width='50px' alt="weather_images"></img></div>
-                <div className="listDate">{this.convertUnixTimeStamp(item.time).month} {this.convertUnixTimeStamp(item.time).day} {this.convertUnixTimeStamp(item.time).hour}:00</div>
+                <div className="listDate">{date.month} {date.day} &nbsp;&nbsp;{date.hour}</div>
                 <div>{item.summary}</div> 
+                <div>{Math.round(this.props.item.temperature)} &deg;F</div>
                 {this.renderElement()}
             </li>
         );

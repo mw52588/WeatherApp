@@ -14,6 +14,7 @@ class Hourly extends Component {
           {/* Pass in the weatherInfo prop to both components */}
           <WeatherInfo weather={this.props.weather} darkskyWeather={this.props.darkskyWeather}/>
           <Humidity weather={this.props.weather} darkskyWeather={this.props.darkskyWeather} />
+          <h1>Hourly Forecast</h1>
           <HourList className="dailyInfo" darkskyWeather={this.props.darkskyWeather}></HourList>
         </div>
       );

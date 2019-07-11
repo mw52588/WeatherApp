@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 
-import ListItem from './ListItem';
+import HourListItem from './HourListItem';
 
 class HourList extends Component {
     constructor(props) {
@@ -14,28 +14,27 @@ class HourList extends Component {
     }
 
     toggleInfo() {  
-        console.log("TOggle");
         this.setState(state => ({
             show: !state.show
         }));
     }
 
     iterateOnlyOneDay(data) {
-       let d = data.slice(0, 24);
-       return d;
+       let day = data.slice(0, 24);
+       return day;
     }
 
     render() {
         const list = this.iterateOnlyOneDay(this.props.darkskyWeather.hourly.data);
-        const listItems = list.map( (item,index) =>
-            <ListItem darkskyWeather={this.props.darkskyWeather} item={item} key={index}>
-            </ListItem>
+        const hourListItems = list.map( (item,index) =>
+            <HourListItem darkskyWeather={this.props.darkskyWeather} item={item} key={index}>
+            </HourListItem>
         );
 
         return (
             <div className="HourList">
                 <ul>
-                    {listItems}
+                    {hourListItems}
                 </ul>
             </div>
         );

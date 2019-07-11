@@ -6,9 +6,9 @@ import {
   HashRouter
 } from "react-router-dom";
 
-import Hourly from './Hourly';
-import FiveDay from './FiveDay';
-import Radar from './Radar';
+import Hourly from './hourlyComponents/Hourly';
+import SevenDay from './weeklyComponents/SevenDay';
+import Radar from './radarComponents/Radar';
 
 // This Component use react-router to display the 
 // navigation tabs without reloading data.
@@ -21,14 +21,14 @@ class NavigationBar extends Component {
           <nav>
             <ul>
                 <li><NavLink exact to="/">Hourly</NavLink></li>
-                <li><NavLink to="/5day">5 Day</NavLink></li>
+                <li><NavLink to="/Weekly">Weekly</NavLink></li>
                 <li><NavLink to="/radar">Radar</NavLink></li>
             </ul>
           </nav>
             <div>
               {/* Pass in the weatherInfo props to Hourly Component. */}
-              <Route exact path="/" render={props => <Hourly weather={this.props.weather} darkskyWeather={this.props.darkskyWeather}{...props} />} />
-              <Route path="/5day" component={FiveDay}/>
+              <Route exact path="/" render={props => <Hourly weather={this.props.weather} darkskyWeather={this.props.darkskyWeather}/>} />
+              <Route path="/Weekly" render={(props) => <SevenDay weather={this.props.weather} darkskyWeather={this.props.darkskyWeather}/>} />
               <Route path="/Radar" component={Radar}/>
             </div>
         </div>

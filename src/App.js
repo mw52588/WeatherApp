@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './Header'; // Import a component from another file
+import Header from './headerComponents/Header'; // Import a component from another file
 import NavigationBar from './NavigationBar';
 
 //wCRB7YTf5ZULKehULKMRXGUlxJOkYTHw
@@ -14,6 +14,7 @@ class App extends Component {
       weather: [],
       done: false,
       darkskyWeather: [],
+      alertInfo: [],
       lat: '',
       lon: '',
       error: ''
@@ -97,12 +98,11 @@ class App extends Component {
 
           {/* Pass in the onZipChange async method to child components.  
           Used in SearchBar component to update the state as a callback */}
-          <Header error={this.state.error} handleErrorState={this.handleErrorState} onZipChange={this.onZipChange} title="Weather Application">
-          </Header>
-          <NavigationBar weather={this.state.weather} darkskyWeather={this.state.darkskyWeather}/>
-
+          <Header error={this.state.error} handleErrorState={this.handleErrorState} onZipChange={this.onZipChange} title="Weather Application"/>
           {/* Pass in the weatherinfo as state to child componenets
            Used for Hourly, Hourly and Humidity components as props */}
+          <NavigationBar weather={this.state.weather} darkskyWeather={this.state.darkskyWeather}/>
+     
          
         </div>
       );

@@ -1,22 +1,22 @@
-import partlycloudyday from './images/02d.png'; 
-import clearday from './images/01d.png'; 
-import clearnight from './images/01n.png'; 
-import rain from './images/09d.png'; 
-import snow from './images/13d.png'; 
-import mist from './images/mist.png';
-import sleet from './images/13d.png'; 
-import wind from './images/wind.png'; 
-import fog from './images/mist.png'; 
-import cloudy from './images/03d.png'; 
-import partlycloudynight from './images/02n.png'; 
-import tornado from './images/tornado.png'; 
-import thunderstorm from './images/11d.png'; 
-import def from './images/50d.png';
+import partlycloudyday from '../images/02d.png'; 
+import clearday from '../images/01d.png'; 
+import clearnight from '../images/01n.png'; 
+import rain from '../images/09d.png'; 
+import snow from '../images/13d.png'; 
+import mist from '../images/mist.png';
+import sleet from '../images/13d.png'; 
+import wind from '../images/wind.png'; 
+import fog from '../images/mist.png'; 
+import cloudy from '../images/03d.png'; 
+import partlycloudynight from '../images/02n.png'; 
+import tornado from '../images/tornado.png'; 
+import thunderstorm from '../images/11d.png'; 
+import def from '../images/50d.png';
 
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 
-class ListItem extends Component {
+class HourListItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -52,7 +52,7 @@ class ListItem extends Component {
                 imgsrc = snow;
                 break;
             case 'sleet': 
-                imgsrc = snow;
+                imgsrc = sleet;
                 break;
             case 'wind': 
                 imgsrc = wind;
@@ -72,6 +72,9 @@ class ListItem extends Component {
             case 'thunderstorm':
                 imgsrc = thunderstorm;
                 break;
+            case 'fog':
+                imgsrc = fog;
+                break;
             default: 
                 imgsrc= def;
         }
@@ -80,9 +83,10 @@ class ListItem extends Component {
 
     convertUnixTimeStamp(unixtimestamp) {
         let date = new Date(unixtimestamp * 1000);
-
         
+        let h = new Array(23);
         let m = new Array(11);
+
         m[0] = "Jan";
         m[1] = "Feb";
         m[2] = "Mar";
@@ -95,9 +99,7 @@ class ListItem extends Component {
         m[9] = "Oct";
         m[10] = "Nov";
         m[11] = "Dec";
-        let month = m[date.getMonth()];
-
-        let h = new Array(23);
+       
         h[0] = "12:00 AM";
         h[1] = "1:00 AM";
         h[2] = "2:00 AM";
@@ -122,6 +124,8 @@ class ListItem extends Component {
         h[21] = "09:00 PM";
         h[22] = "10:00 PM";
         h[23] = "11:00 PM";
+
+        let month = m[date.getMonth()];
         let hour = h[date.getHours()];
 
         let formattedTime = {
@@ -140,7 +144,7 @@ class ListItem extends Component {
         if (this.state.show === true) {
             return (
                 <div className="listItemShow">
-                    <div>Precipitation:    {Math.round(this.props.item.precipProbability)}%</div>
+                    <div>Precipitation:  {Math.round(this.props.item.precipProbability)}%</div>
                     <div>Dew Point:  {Math.round(this.props.item.dewPoint)}</div>
                     <div>UV Index: {this.props.item.uvIndex}</div>
                     <div>Humidity: {Math.round((this.props.item.humidity)*100)}%</div>
@@ -148,6 +152,7 @@ class ListItem extends Component {
                 </div>
             );
         }
+
         else {
             return (
                 <div></div>
@@ -155,7 +160,6 @@ class ListItem extends Component {
         }
     }
 
-        //Need to bind the methods action from onSubmit and onChange.
     render() {
         let item = this.props.item;
         let date = this.convertUnixTimeStamp(item.time);
@@ -172,4 +176,4 @@ class ListItem extends Component {
     }
 }
 
-export default ListItem
+export default HourListItem;

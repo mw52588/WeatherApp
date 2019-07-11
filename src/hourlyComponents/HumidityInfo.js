@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 
-class Humidity extends Component {
+class HumidityInfo extends Component {
 
-  //Convert the visibility from meters to miles.
-  ConvertMetersToMiles(meters) {
-     return (meters / 1609.34).toFixed(2);
-  }
-
-  //Calculate wind direction based on degrees.
+  //Calculate wind direction based on 360 degrees.
   WindDirection(dir) {
     let direction = "";
     if ((dir >= 347.5 && dir <= 360) || ( dir >= 0 && dir <= 12.5 )) {
@@ -37,22 +32,24 @@ class Humidity extends Component {
     }
     return direction;
   }
+
   render() {
-    let visibility = this.ConvertMetersToMiles(this.props.weather.visibility);
-    let direction = this.WindDirection(this.props.weather.wind.deg);
-    let precip = this.props.darkskyWeather.currently.precipProbability * 100;
-    let humidity = this.props.darkskyWeather.currently.humidity * 100;
+    let visibility = this.props.darkskyWeather.currently.visibility;  // Visibility in miles.
+    let direction = this.WindDirection(this.props.darkskyWeather.currently.windBearing); //Calculate the wind bearing by degrees to determine direction.
+    let precip = this.props.darkskyWeather.currently.precipProbability * 100; //Calculate percipitation out of 100%
+    let humidity = this.props.darkskyWeather.currently.humidity * 100; //Calculate humidity out of 100%
+
     return (
         <div className="Humidity">
             <p>Preceiption: {Math.round(precip)}%</p>
             <p>Humidity: {Math.round(humidity)}%</p>
             <p>Dew Point: {Math.round(this.props.darkskyWeather.currently.dewPoint)}</p>
             <p>UV Index: {this.props.darkskyWeather.currently.uvIndex}</p>
-            <p>Wind Speed: {direction} at {this.props.weather.wind.speed} MPH</p>
+            <p>Wind Speed: {direction} at {Math.round(this.props.darkskyWeather.currently.windSpeed)} MPH</p>
             <p>Visibility: {visibility} miles</p>
         </div>
     );
   };
 }
 
-export default Humidity;
+export default HumidityInfo;

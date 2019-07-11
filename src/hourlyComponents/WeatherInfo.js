@@ -1,30 +1,21 @@
 import React, { Component } from 'react';
-import './App.css';
-import partlycloudyday from './images/02d.png'; 
-import clearday from './images/01d.png'; 
-import clearnight from './images/01n.png'; 
-import rain from './images/09d.png'; 
-import snow from './images/13d.png'; 
-import mist from './images/mist.png';
-import sleet from './images/13d.png'; 
-import wind from './images/wind.png'; 
-import fog from './images/mist.png'; 
-import cloudy from './images/03d.png'; 
-import partlycloudynight from './images/02n.png'; 
-import tornado from './images/tornado.png'; 
-import thunderstorm from './images/11d.png'; 
-import def from './images/50d.png';
+import '../App.css';
+import partlycloudyday from '../images/02d.png'; 
+import clearday from '../images/01d.png'; 
+import clearnight from '../images/01n.png'; 
+import rain from '../images/09d.png'; 
+import snow from '../images/13d.png'; 
+import mist from '../images/mist.png';
+import sleet from '../images/13d.png'; 
+import wind from '../images/wind.png'; 
+import fog from '../images/mist.png'; 
+import cloudy from '../images/03d.png'; 
+import partlycloudynight from '../images/02n.png'; 
+import tornado from '../images/tornado.png'; 
+import thunderstorm from '../images/11d.png'; 
+import def from '../images/50d.png';
 
 class WeatherInfo extends Component {
-
-  //Formula to Convert Kelvin to Fahrenheit.
-  KelvinToFahrenheit (kelvin) {
-      if (kelvin === undefined) {
-        return 0;
-      }
-      let fahrenheit = kelvin * (9/5) - 459.67
-      return Math.round(fahrenheit);
-  }  
   
   // Grab the image symbol from the weatherInfo props.
   GetSymbol (symbol) {
@@ -48,14 +39,17 @@ class WeatherInfo extends Component {
         case 'snow': 
             imgsrc = snow;
             break;
+        case 'mist': 
+            imgsrc = mist;
+            break;
         case 'sleet': 
-            imgsrc = snow;
+            imgsrc = sleet;
             break;
         case 'wind': 
             imgsrc = wind;
             break;
         case 'fog': 
-            imgsrc = mist;
+            imgsrc = fog;
             break;
         case 'cloudy':
             imgsrc = cloudy;
@@ -70,19 +64,16 @@ class WeatherInfo extends Component {
             imgsrc = thunderstorm;
             break;
         default: 
-            imgsrc= def;
+            imgsrc = def;
     }
     return imgsrc;
   }
   
   render() {
-    //console.log(this.props.weatherInfo.location.results[0].locations[0].latLng.lat);
-    //console.log(this.props.weatherInfo.location.results[0].locations[0].latLng.lng);
-    //console.log("Latitude: "+  this.props.location.results[0].locations.latLng.lat);
-    //console.log("Longitude: "+  this.props.location.results[0].locations.latLng.lng)
 
-    let current = this.props.darkskyWeather.currently.apparentTemperature;
+    let current = this.props.darkskyWeather.currently.temperature;
     let symbol = this.GetSymbol(this.props.darkskyWeather.currently.icon); //Convert the image from json data of WeatherInfo prop.
+    
     //Update the Component's weatherInfo.
     return (
       <div className="WeatherInfo">

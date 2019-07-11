@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 // This component will allow a user to submit a zip code and update the state of value
 // and on submit it will use the onZipChagne callback from App.js to update teh state of the zip code.
 class SearchBar extends Component {

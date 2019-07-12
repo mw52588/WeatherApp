@@ -10,7 +10,6 @@ class HourList extends Component {
 
         //Need to bind the methods action from onSubmit and onChange.
         this.toggleInfo = this.toggleInfo.bind(this);
-       
     }
 
     toggleInfo() {  
@@ -38,7 +37,7 @@ class HourList extends Component {
                 </ul>
             </div>
         );
-    }
+    }//End render function.
 }
   
 export default HourList;

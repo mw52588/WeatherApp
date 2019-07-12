@@ -57,7 +57,7 @@ class HourListItem extends Component {
             case 'wind': 
                 imgsrc = wind;
                 break;
-            case 'fog': 
+            case 'mist': 
                 imgsrc = mist;
                 break;
             case 'cloudy':
@@ -148,7 +148,6 @@ class HourListItem extends Component {
                     <div>Dew Point:  {Math.round(this.props.item.dewPoint)}</div>
                     <div>UV Index: {this.props.item.uvIndex}</div>
                     <div>Humidity: {Math.round((this.props.item.humidity)*100)}%</div>
-
                 </div>
             );
         }

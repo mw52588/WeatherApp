@@ -5,6 +5,7 @@ import NavigationBar from './NavigationBar';
 
 //wCRB7YTf5ZULKehULKMRXGUlxJOkYTHw
 //The begining Parent Component.  Where state belongs.
+console.log();
 class App extends Component {
 
   constructor(props) {
@@ -26,7 +27,7 @@ class App extends Component {
   }
 
   async fetchCoords(zip) {
-    const URL =`http://api.openweathermap.org/data/2.5/weather?zip=${zip}&apikey=dcd396a13d862c3866ee78206dad4f88`; // Will return a 404
+    const URL =`http://api.openweathermap.org/data/2.5/weather?zip=${zip}&apikey=${process.env.REACT_APP_WEATHERAPI}`; // Will return a 404
     try {
       
       const response = await fetch(URL)
@@ -41,7 +42,7 @@ class App extends Component {
   }
   
   async fetchWeather(lat, lon) {
-      const URL = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/b552af31e2a5c7396e28b2befbfbf422/${lat},${lon}`;
+      const URL = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${process.env.REACT_APP_DARKSKYAPI}/${lat},${lon}`;
     try {
       const response = await fetch(URL)
       const result = await response.json();
@@ -95,15 +96,12 @@ class App extends Component {
     else {
       return (
         <div className="App">
-
           {/* Pass in the onZipChange async method to child components.  
           Used in SearchBar component to update the state as a callback */}
           <Header error={this.state.error} handleErrorState={this.handleErrorState} onZipChange={this.onZipChange} title="Weather Application"/>
           {/* Pass in the weatherinfo as state to child componenets
            Used for Hourly, Hourly and Humidity components as props */}
           <NavigationBar weather={this.state.weather} darkskyWeather={this.state.darkskyWeather}/>
-     
-         
         </div>
       );
     }

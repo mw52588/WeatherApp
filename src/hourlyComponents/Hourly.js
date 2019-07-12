@@ -24,7 +24,6 @@ class Hourly extends Component {
     else {
       return (
         <div className="Container">
-
         </div>
       );
     } 

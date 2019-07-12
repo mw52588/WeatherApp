@@ -8,7 +8,7 @@ class AlertInfoList extends Component {
         let h = new Array(23);
         let m = new Array(11);
         let minutes = "";
-        if (date.getMinutes() == 0) {
+        if (date.getMinutes() === 0) {
             minutes = "00";
         }
         else {

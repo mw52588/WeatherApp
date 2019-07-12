@@ -13,8 +13,6 @@ class SearchBar extends Component {
         this.handleSearchChange = this.handleSearchChange.bind(this);
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     }
-
-
    
     handleSearchChange(event) {
         event.preventDefault();  //enusre page doesn't reload.
@@ -33,20 +31,17 @@ class SearchBar extends Component {
         }    
     }
 
-
     render() {
         return (
             <div className="App-header-searchbar">
-                {/* onSubmit will update the state of zip on the App component through the callback of onZipChange*/}
-               
+            {/* onSubmit will update the state of zip on the App component through the callback of onZipChange*/}
               <form onSubmit={this.handleSearchSubmit}>  
                 <label>&#160;&#160;Zip Code
                     <input type="text" maxLength="5" placeholder="Enter Zip Code..." value={this.state.value} onChange={this.handleSearchChange}  />
                 </label>
                 <input type="submit" value="Submit"/>
                 <p><span>{this.props.error}</span><br></br><br></br></p>
-              </form>
-            
+              </form>          
             </div>
         );
     }

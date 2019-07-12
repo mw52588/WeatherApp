@@ -57,7 +57,7 @@ class SevenDayListItem extends Component {
             case 'wind': 
                 imgsrc = wind;
                 break;
-            case 'fog': 
+            case 'mist': 
                 imgsrc = mist;
                 break;
             case 'cloudy':

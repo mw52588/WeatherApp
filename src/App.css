@@ -16,7 +16,6 @@
 .App-header {
     background-color: #222;
     color: white;
-    padding-top: 10px;
 }
 
 .App-header span {
@@ -27,6 +26,7 @@
 .App-header img {
     display: inline-block;
     vertical-align: top;
+    margin-top: 30px;
     
 }
 
@@ -36,12 +36,13 @@
     padding-left: 50px;
     padding-right: 70px;
     vertical-align: top;
+    margin-top: 50px;
 }
 
 .App-header-searchbar {
     display: inline-block;
     text-align: left;
-    margin-top: 50px;
+    margin-top: 30px;
     vertical-align: bottom;
 }
 

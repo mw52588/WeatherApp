@@ -166,7 +166,7 @@ nav {
 }
 
 .listImage {
-    
+    padding-right: 20px;
     float: left;
 }
 
@@ -206,4 +206,8 @@ nav {
 
 .AlertInfo ul li {
     list-style: none;
+}
+#radar {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

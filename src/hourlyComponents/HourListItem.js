@@ -26,14 +26,12 @@ class HourListItem extends Component {
     }
 
     toggleInfo() {  
-        console.log("TOggle");
         this.setState(state => ({
             show: !state.show
         }));
     }
 
     summaryImage(image) {
-        console.log(image);
         let imgsrc = ''
         switch(image) {
             case 'partly-cloudy-day':

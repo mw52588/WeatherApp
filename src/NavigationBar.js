@@ -29,7 +29,7 @@ class NavigationBar extends Component {
               {/* Pass in the weatherInfo props to Hourly Component. */}
               <Route exact path="/" render={props => <Hourly weather={this.props.weather} darkskyWeather={this.props.darkskyWeather}/>} />
               <Route path="/Weekly" render={(props) => <SevenDay weather={this.props.weather} darkskyWeather={this.props.darkskyWeather}/>} />
-              <Route path="/Radar" component={Radar}/>
+              <Route path="/Radar" render={(props) => <Radar weather={this.props.weather}/>} />
             </div>
         </div>
       </HashRouter>
